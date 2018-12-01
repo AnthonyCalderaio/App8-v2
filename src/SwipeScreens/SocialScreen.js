@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
-
+import Profiles from '/Users/anthony/Desktop/Manifest/app8/src/Profiles/Profiles.js';
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
   android:
@@ -13,7 +13,7 @@ class SocialScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Social</Text>
+       <Profiles/>
       </View>
     );
   }

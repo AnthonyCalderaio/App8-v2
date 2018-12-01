@@ -11,6 +11,19 @@ import {Platform, StyleSheet, Text, View} from 'react-native';
 import { createStackNavigator, createAppContainer } from "react-navigation";
 import HomeScreen from '/Users/anthony/Desktop/Manifest/app8/src/screens/HomeScreen.js';
 
+import { ApolloClient } from 'apollo-client';
+import { HttpLink } from 'apollo-link-http';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+
+import { ApolloProvider } from 'react-apollo'
+
+
+const httpLink = new HttpLink({ uri: 'https://api.graph.cool/simple/v1/cjp3334jy8c9q0125gpihcz4s' })
+
+const client = new ApolloClient({
+  link: httpLink,
+  cache: new InMemoryCache()
+})
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -23,9 +36,9 @@ const instructions = Platform.select({
 class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
+      <ApolloProvider client={client}>
         <AppNavigator/>
-      </View>
+      </ApolloProvider>
     );
   }
 }

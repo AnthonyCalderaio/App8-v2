@@ -6,11 +6,12 @@ import React, {Component} from 'react';
 import {StyleSheet,  View, Text} from 'react-native';
 
 
-
 //import profile from '/Users/anthony/Desktop/Manifest/App6/src/profileData/profile.js';
 class ProfileScreen extends React.Component {
 
-
+  state = {
+    Users: []
+  };
 
     constructor(props) {
       super(props);
@@ -49,7 +50,7 @@ class ProfileScreen extends React.Component {
     
     return (
       <View>
-        <Text>Profile View</Text>
+       <Text>Profile</Text>
         </View>
     );
   }

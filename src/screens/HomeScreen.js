@@ -16,6 +16,7 @@ import ChatScreen from '/Users/anthony/Desktop/Manifest/app8/src/SwipeScreens/Ch
 import SocialScreen from '/Users/anthony/Desktop/Manifest/app8/src/SwipeScreens/SocialScreen.js';
 
 
+
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
   android:
