@@ -43,7 +43,9 @@ const styles = StyleSheet.create({
   imageContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(0,0,0,.07)'
+    backgroundColor: 'rgba(0,0,0,.07)',
+    marginBottom: 5,
+    
   },
   title: {
     padding: 22,

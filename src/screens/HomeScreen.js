@@ -14,7 +14,7 @@ import ProfileScreen from '/Users/anthony/Desktop/Manifest/app8/src/SwipeScreens
 import BusinessScreen from '/Users/anthony/Desktop/Manifest/app8/src/SwipeScreens/BusinessScreen.js';
 import ChatScreen from '/Users/anthony/Desktop/Manifest/app8/src/SwipeScreens/ChatScreen.js';
 import SocialScreen from '/Users/anthony/Desktop/Manifest/app8/src/SwipeScreens/SocialScreen.js';
-
+import MapScreen from '/Users/anthony/Desktop/Manifest/app8/src/SwipeScreens/MapScreen.js';
 
 
 const instructions = Platform.select({
@@ -38,7 +38,8 @@ const AppTabNavigator = createBottomTabNavigator({
   ProfileTab: ProfileScreen,
   BusinessTab: BusinessScreen,
   ChatTab: ChatScreen,
-  SocialTab: SocialScreen
+  SocialTab: SocialScreen,
+  Map: MapScreen
   
   // ,ChatTab: {
   //     screen: ChatScreen
