@@ -5,3 +5,4 @@ type HelloPayload {
 extend type Query {
   hello(name: String): HelloPayload
 }
+

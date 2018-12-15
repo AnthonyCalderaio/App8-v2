@@ -14,7 +14,28 @@
 type User @model {
   id: ID! @isUnique
   name: String
+  phone: String
+  age: String
+  password: String
+  videos: [Video!]! @relation(name: "UserVideos")
 }
+
+type Video @model {
+  id: ID! @isUnique
+  user: User! @relation(name: "UserVideos")
+}
+
+type File @model {
+  id: ID! @isUnique
+  secret: String
+  name: String
+  url: String
+  content: String
+
+
+}
+
+
 
 
 
@@ -29,3 +50,26 @@ type User @model {
 #   author: User! @relation(name: "UserPosts")
 # }
 
+
+
+#type User {
+  #id: ID!
+  #student: Student @relation(name: "UserOnStudent")
+  #company: Company @relation(name: "UserOnCompany")
+  #userType: UserType!
+#}
+
+#type Company {
+  #id: ID!
+  #user: User @relation(name: "UserOnCompany")
+#}
+
+#type Student {
+  #id: ID!
+  #user: User @relation(name: "UserOnStudent")
+#}
+
+#enum UserType {
+  #Student,
+  #Company
+#}

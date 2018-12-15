@@ -16,7 +16,11 @@ import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
 import { ApolloProvider } from 'react-apollo'
-
+import LoginScreen from '/Users/anthony/Desktop/Manifest/app8/src/Login&Signup/LoginScreen.js';
+//import PracticeScreen from '/Users/anthony/Desktop/Manifest/app8/src/Menus/MapButtonSearchMenu/PracticeScreen.js';
+//import PracticeScreen2 from '/Users/anthony/Desktop/Manifest/app8/src/Menus/MapButtonSearchMenu/PracticeScreen2.js';
+//import PracticeScreen3 from '/Users/anthony/Desktop/Manifest/app8/src/Menus/MapButtonSearchMenu/PracticeScreen3.js';
+import ProfileScreen from '/Users/anthony/Desktop/Manifest/app8/src/SwipeScreens/ProfileScreen.js';
 
 const httpLink = new HttpLink({ uri: 'https://api.graph.cool/simple/v1/cjp3334jy8c9q0125gpihcz4s' })
 
@@ -44,8 +48,23 @@ class App extends React.Component {
 }
 
 const AppNavigator = createStackNavigator({
+  // Login: {
+  //   screen: LoginScreen
+  // },
+  // PracticeScreen: {
+  //   screen: PracticeScreen
+  // },
+  // PracticeScreen2: {
+  //   screen: PracticeScreen2
+  // },
+  // PracticeScreen3: {
+  //   screen: PracticeScreen3
+  // },
   Home: {
     screen: HomeScreen
+  },
+  Profile: {
+    screen: ProfileScreen
   }
 });
 

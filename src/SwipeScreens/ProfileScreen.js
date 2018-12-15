@@ -4,7 +4,9 @@
 //Solved... (THEN: react-native run-ios)
 import React, {Component} from 'react';
 import {StyleSheet,  View, Text} from 'react-native';
-
+import MyProfile from '/Users/anthony/Desktop/Manifest/app8/src/Profiles/MyProfile.js';
+import ImagePick from '/Users/anthony/Desktop/Manifest/app8/src/ImageUpload/ImagePick.js';
+import { FloatingAction } from 'react-native-floating-action';
 
 //import profile from '/Users/anthony/Desktop/Manifest/App6/src/profileData/profile.js';
 class ProfileScreen extends React.Component {
@@ -16,41 +18,47 @@ class ProfileScreen extends React.Component {
     constructor(props) {
       super(props);
   
-      // this.client = new ApolloClient({
-      //   uri: "https://w5xlvm3vzz.lp.gql.zone/graphql",
-      // });
-
-  
       this.state = {
         isLoadingComplete: false,
       };
     }
-
-
   render() {
-    // if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
-    //   return (
-    //     <AppLoading
-    //       startAsync={this._loadResourcesAsync}
-    //       onError={this._handleLoadingError}
-    //       onFinish={this._handleFinishLoading}
-    //     />
-    //   );
-    // } else {
-    //   return (
-    //     <View style={styles.container}>
-    //       {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-    //       <ApolloProvider client={this.client}>
-    //         <profile />
-    //       </ApolloProvider>
-    //     </View>
-    //   );
-    // }
-
-    
+    const actions = [{
+      text: 'Profile',
+      icon: require('/Users/anthony/Desktop/Manifest/app8/src/assets/imgs/default_image.jpg'),
+      name: 'bt_accessibility',
+      position: 2
+    }, {
+      text: 'Location',
+      icon: require('/Users/anthony/Desktop/Manifest/app8/src/assets/imgs/default_image.jpg'),
+      name: 'bt_language',
+      position: 1
+    }, {
+      text: 'Chat',
+      icon: require('/Users/anthony/Desktop/Manifest/app8/src/assets/imgs/default_image.jpg'),
+      name: 'bt_room',
+      position: 3
+    }, {
+      text: 'Video',
+      icon: require('/Users/anthony/Desktop/Manifest/app8/src/assets/imgs/default_image.jpg'),
+      name: 'bt_videocam',
+      position: 4
+    }];
     return (
       <View>
-       <Text>Profile</Text>
+       
+         <MyProfile/>
+         <ImagePick/>
+         <FloatingAction
+      floatingIcon={require('/Users/anthony/Desktop/Manifest/app8/src/assets/imgs/default_image.jpg')}
+       position={"right"}
+        actions={actions}
+        onPressItem={
+          (name) => {
+            console.log(`selected button: ${name}`);
+          }
+        }
+      />
         </View>
     );
   }

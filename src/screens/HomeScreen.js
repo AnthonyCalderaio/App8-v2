@@ -35,10 +35,10 @@ class HomeScreen extends React.Component {
   }
 }
 const AppTabNavigator = createBottomTabNavigator({
-  ProfileTab: ProfileScreen,
-  BusinessTab: BusinessScreen,
-  ChatTab: ChatScreen,
-  SocialTab: SocialScreen,
+  // ProfileTab: ProfileScreen,
+  // BusinessTab: BusinessScreen,
+  // ChatTab: ChatScreen,
+  // SocialTab: SocialScreen,
   Map: MapScreen
   
   // ,ChatTab: {
