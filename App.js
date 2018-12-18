@@ -8,7 +8,7 @@
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
-import { createStackNavigator, createAppContainer } from "react-navigation";
+import { createStackNavigator, createAppContainer} from "react-navigation";
 import HomeScreen from '/Users/anthony/Desktop/Manifest/app8/src/screens/HomeScreen.js';
 
 import { ApolloClient } from 'apollo-client';
@@ -21,6 +21,10 @@ import LoginScreen from '/Users/anthony/Desktop/Manifest/app8/src/Login&Signup/L
 //import PracticeScreen2 from '/Users/anthony/Desktop/Manifest/app8/src/Menus/MapButtonSearchMenu/PracticeScreen2.js';
 //import PracticeScreen3 from '/Users/anthony/Desktop/Manifest/app8/src/Menus/MapButtonSearchMenu/PracticeScreen3.js';
 import ProfileScreen from '/Users/anthony/Desktop/Manifest/app8/src/SwipeScreens/ProfileScreen.js';
+import MapScreen from '/Users/anthony/Desktop/Manifest/app8/src/SwipeScreens/MapScreen.js';
+import SocialScreen from '/Users/anthony/Desktop/Manifest/app8/src/SwipeScreens/SocialScreen.js';
+import BusinessScreen from '/Users/anthony/Desktop/Manifest/app8/src/SwipeScreens/BusinessScreen.js';
+import ChatScreen from '/Users/anthony/Desktop/Manifest/app8/src/SwipeScreens/ChatScreen.js';
 
 const httpLink = new HttpLink({ uri: 'https://api.graph.cool/simple/v1/cjp3334jy8c9q0125gpihcz4s' })
 
@@ -41,16 +45,16 @@ class App extends React.Component {
   render() {
     return (
       <ApolloProvider client={client}>
-        <AppNavigator/>
+        <App2/>
       </ApolloProvider>
     );
   }
 }
 
 const AppNavigator = createStackNavigator({
-  // Login: {
-  //   screen: LoginScreen
-  // },
+  Login: {
+    screen: LoginScreen
+  },
   // PracticeScreen: {
   //   screen: PracticeScreen
   // },
@@ -60,14 +64,28 @@ const AppNavigator = createStackNavigator({
   // PracticeScreen3: {
   //   screen: PracticeScreen3
   // },
-  Home: {
-    screen: HomeScreen
-  },
+  // Home: {
+  //   screen: HomeScreen
+  // }
+  // ,
+  Map: {
+      screen: MapScreen
+    }
+    ,
   Profile: {
     screen: ProfileScreen
+  },
+  Wall: {
+    screen: SocialScreen
+  },
+  Business: {
+    screen: BusinessScreen
+  },
+  Chat: {
+    screen: ChatScreen
   }
 });
-
+//const AppContainer = createAppContainer(AppNavigator);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -86,5 +104,5 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
-
-export default createAppContainer(AppNavigator);
+const App2 = createAppContainer(AppNavigator)
+export default App2;

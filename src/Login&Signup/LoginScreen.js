@@ -30,8 +30,8 @@ export default class HomeScreen extends React.Component {
             
         />
         <Button
-        Text={"Login"}
-        onPress={() => {}}
+        title={"Login"}
+        onPress={() => {this.props.navigation.navigate('Map')}}
         />
         
       </View>

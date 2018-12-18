@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View, Image, TouchableWithoutFeedback } from 'react-native';
+import { Platform, StyleSheet, Text, View, Image, TouchableWithoutFeedback, Button } from 'react-native';
 import MapView from 'react-native-maps';
 import { Marker } from 'react-native-maps';
 import RangeSlider from 'react-native-range-slider' //Not using yet
@@ -8,6 +8,8 @@ import ActionButton from 'react-native-action-button'; //Not using currently
 import Icon from 'react-native-vector-icons/Ionicons'; //Not using currently
 import { FloatingAction } from 'react-native-floating-action';
 //import 'react-rangeslider/lib/index.css'
+import { createStackNavigator } from "react-navigation";
+import {ProfileScreen} from '/Users/anthony/Desktop/Manifest/app8/src/SwipeScreens/ProfileScreen.js';
 
 import Menu, {
   MenuProvider,
@@ -30,6 +32,27 @@ const { SlideInMenu } = renderers;
 
 
 class MapScreen extends React.Component {
+
+  static navigationOptions = {
+        
+    title:"Map",
+  //For image in header
+  //   headerTitle: (
+  //     <View style={{flex:1, flexDirection:'row', justifyContent:'center'}}>
+  //         <Image
+  //             source={image}
+  //             style={{width:110, height:18}}
+  //         />
+  //     </View>
+  // ),
+
+    headerLeft: null,
+    headerTintColor: "white",
+    headerStyle: {
+      backgroundColor: '#0D0D0D'
+    }
+   
+}
 
   constructor(props) {
     super(props);
@@ -68,6 +91,8 @@ class MapScreen extends React.Component {
       (error) => this.setState({ error: error.message }),
       { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000, distanceFilter: 10 },
     );
+
+    
   }
 
   _onMapReady = () => this.setState({ marginBottom: 0 })
@@ -137,30 +162,38 @@ class MapScreen extends React.Component {
 
   render() {
     let { volume } = this.state
-
+    const {navigate} = this.props.navigation
     const actions = [{
       text: 'Profile',
       icon: require('/Users/anthony/Desktop/Manifest/app8/src/assets/imgs/default_image.jpg'),
       name: 'bt_profile',
       position: 2
-    }, {
-      text: 'Location',
-      icon: require('/Users/anthony/Desktop/Manifest/app8/src/assets/imgs/default_image.jpg'),
-      name: 'bt_language',
-      position: 1
-    }, {
+    }
+    ,{
       text: 'Chat',
       icon: require('/Users/anthony/Desktop/Manifest/app8/src/assets/imgs/default_image.jpg'),
-      name: 'bt_room',
+      name: 'bt_chat',
       position: 3
-    }, {
-      text: 'Video',
+    }
+    ,{
+      text: 'Infinity Wall',
       icon: require('/Users/anthony/Desktop/Manifest/app8/src/assets/imgs/default_image.jpg'),
-      name: 'bt_videocam',
+      name: 'bt_wall',
       position: 4
-    }];
+    },{
+      text: 'Business Wall',
+      icon: require('/Users/anthony/Desktop/Manifest/app8/src/assets/imgs/default_image.jpg'),
+      name: 'bt_business',
+      position: 4
+    },
+
+  ];
+
+  
 
     return (
+      
+      
       <View style={styles.container}>
       
 
@@ -352,26 +385,39 @@ class MapScreen extends React.Component {
               />
             </TouchableWithoutFeedback> */}
 
-
+      {/* <Button
+      title={"pract"}
+      style={{
+        height:20,
+        width: 20
+      }}
+      onPress={alert("works")}
+      /> */}
 
 
       <FloatingAction
+        floatingIcon={require('/Users/anthony/Desktop/Manifest/app8/src/assets/imgs/icons/mapIcon.png')}
         actions={actions}
         position={"right"}
         onPressItem={
           (name) => {
-            if (name === "bt_profile"){
-            //Testing Purposes
-             alert('works')
-            // return
-            this.props.navigation.navigate('ProfileScreen')
-             return
-            }
-            alert(`selected button: ${name}`)
+             if (name === "bt_profile"){
+            this.props.navigation.navigate('Profile')
+             }
+             if (name === "bt_wall"){
+              this.props.navigation.navigate('Wall')
+               }
+               if (name === "bt_chat"){
+                this.props.navigation.navigate('Chat')
+                 }
+                 if (name === "bt_business"){
+                  this.props.navigation.navigate('Business')
+                   }
           }
         }
       />
        <FloatingAction
+       floatingIcon={require('/Users/anthony/Desktop/Manifest/app8/src/assets/imgs/searchIcon500x500.png')}
        position={"center"}
         actions={actions}
         onPressItem={
@@ -381,7 +427,7 @@ class MapScreen extends React.Component {
         }
       />
       <FloatingAction
-      floatingIcon={require('/Users/anthony/Desktop/Manifest/app8/src/assets/imgs/default_image.jpg')}
+      floatingIcon={require('/Users/anthony/Desktop/Manifest/app8/src/assets/imgs/shuffleIcon.png')}
        position={"left"}
         actions={actions}
         onPressItem={
@@ -424,11 +470,13 @@ const styles = StyleSheet.create({
   },
   map: {
     // position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
+    //top: 0,
+    //left: 0,
+    //right: 0,
     //bottom: 600,
-    height:450,alignSelf:'stretch',backgroundColor:'pink',margin:5
+    //height:450,
+    flex: 1,
+    alignSelf:'stretch',backgroundColor:'pink',margin:5
   },
   bottomView: {
 

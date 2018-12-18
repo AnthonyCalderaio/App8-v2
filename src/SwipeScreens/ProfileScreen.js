@@ -22,41 +22,82 @@ class ProfileScreen extends React.Component {
         isLoadingComplete: false,
       };
     }
+    static navigationOptions = {
+        
+      title:"Profile",
+    //For image in header
+    //   headerTitle: (
+    //     <View style={{flex:1, flexDirection:'row', justifyContent:'center'}}>
+    //         <Image
+    //             source={image}
+    //             style={{width:110, height:18}}
+    //         />
+    //     </View>
+    // ),
+
+      headerLeft: null,
+      headerTintColor: "white",
+      headerStyle: {
+        backgroundColor: '#0D0D0D'
+      }
+     
+  }
+
+
+
+
   render() {
-    const actions = [{
-      text: 'Profile',
+    const actions = [
+    //   {
+    //   text: 'Profile',
+    //   icon: require('/Users/anthony/Desktop/Manifest/app8/src/assets/imgs/default_image.jpg'),
+    //   name: 'bt_accessibility',
+    //   position: 2
+    // }, 
+    {
+      text: 'Map',
       icon: require('/Users/anthony/Desktop/Manifest/app8/src/assets/imgs/default_image.jpg'),
-      name: 'bt_accessibility',
-      position: 2
-    }, {
-      text: 'Location',
-      icon: require('/Users/anthony/Desktop/Manifest/app8/src/assets/imgs/default_image.jpg'),
-      name: 'bt_language',
+      name: 'bt_map',
       position: 1
-    }, {
-      text: 'Chat',
+    },
+    {
+      text: 'Infinity Wall',
       icon: require('/Users/anthony/Desktop/Manifest/app8/src/assets/imgs/default_image.jpg'),
-      name: 'bt_room',
-      position: 3
-    }, {
-      text: 'Video',
+      name: 'bt_wall',
+      position: 1
+    },
+    {
+      text: 'Buesiness Wall',
       icon: require('/Users/anthony/Desktop/Manifest/app8/src/assets/imgs/default_image.jpg'),
-      name: 'bt_videocam',
-      position: 4
-    }];
+      name: 'bt_business',
+      position: 1
+    },
+  ];
     return (
-      <View>
+      <View 
+      style={styles.container}
+      >
        
          <MyProfile/>
-         <ImagePick/>
+         {/* <ImagePick/> */}
          <FloatingAction
-      floatingIcon={require('/Users/anthony/Desktop/Manifest/app8/src/assets/imgs/default_image.jpg')}
-       position={"right"}
-        actions={actions}
-        onPressItem={
-          (name) => {
-            console.log(`selected button: ${name}`);
-          }
+         styles={{bottom: 10}}
+         //floatingIcon={require('/Users/anthony/Desktop/Manifest/app8/src/assets/imgs/default_image.jpg')}
+         position={"right"}
+         actions={actions}
+         onPressItem={
+        (name) => {
+            if (name === "bt_map"){
+           this.props.navigation.navigate('Map')
+            }
+            if (name === "bt_wall"){
+              this.props.navigation.navigate('Wall')
+               }
+               if (name === "bt_business"){
+                this.props.navigation.navigate('Business')
+                 }
+            
+         }
         }
       />
         </View>
@@ -67,7 +108,7 @@ class ProfileScreen extends React.Component {
 }
 
 
-export default ProfileScreen;
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -78,3 +119,4 @@ const styles = StyleSheet.create({
     
 }}
 );
+export default ProfileScreen;
